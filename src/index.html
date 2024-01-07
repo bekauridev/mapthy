@@ -4,15 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+    <meta
+      name="description"
+      content="mapty is a nice, easy to use website that helps you plan your Activities"
+    />
+
+    <!-- manifest -->
+    <link rel="manifest" href="./manifest.json" />
+
+    <link rel="shortcut icon" type="image/png" href="./image/icon.png" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="style.css" />
-
+    <link rel="stylesheet" href="./styles.css/style.css" />
+    <link rel="stylesheet" href="./styles.css/queries.css" />
+    <!-- < leaflet styles > -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -20,22 +29,62 @@
       crossorigin=""
     />
     <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+
+    <!-- < icons >  -->
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- < leaflet.js > -->
+    <script
       defer
       src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""
     ></script>
 
-    <!-- <script defer src="other.js"></script> -->
+    <!-- < other.js >  -->
     <script defer src="script.js"></script>
     <title>mapty // Map your workouts</title>
   </head>
   <body>
-    <div class="sidebar">
-      <img src="logo.png" alt="Logo" class="logo" />
+    <div class="sidebar sidebar--active">
+      <img src="./image/logo.png" alt="Logo" class="logo" />
 
+      <div class="workouts__title--box">
+        <h1>Activities</h1>
+        <div>
+          <button class="workouts__btn workouts__sort--btn">sort</button>
+          <button class="workouts__btn workouts__clear--btn">clear all</button>
+        </div>
+      </div>
+      <div class="errorMessages">
+        <div class="message error-message error-message--hidden location-error">
+          <p>Could not get your position 📍</p>
+          <span
+            >If you want to use this application, make sure to turn on
+            location.</span
+          >
+        </div>
+        <div
+          class="message error-message error-message--hidden workouts__message-error"
+        >
+          <p>
+            ❗ Please enter the digits in the correct format. They must be
+            positive digits and must not contain letters
+          </p>
+        </div>
+      </div>
       <ul class="workouts">
         <form class="form hidden">
+          <ion-icon
+            class="form__icon--closeFrom icon__close"
+            name="close-outline"
+          ></ion-icon>
           <div class="form__row">
             <label class="form__label">Type</label>
             <select class="form__input form__input--type">
@@ -71,6 +120,9 @@
           </div>
           <button class="form__btn">OK</button>
         </form>
+        <div class="message workouts__message--hidden workouts__message">
+          <p>Welcome click on the map and plan your activities 😊</p>
+        </div>
 
         <!-- <li class="workout workout--running" data-id="1234567890">
           <h2 class="workout__title">Running on April 14</h2>
@@ -128,11 +180,29 @@
           target="_blank"
           href="https://twitter.com/jonasschmedtman"
           >Jonas Schmedtmann</a
-        >. Use for learning or your portfolio. Don't use to teach. Don't claim
-        as your own.
+        >. Created by
+
+        <a
+          class="footer__link twitter-link"
+          target="_blank"
+          href="https://twitter.com/giorgibeqauri15"
+        >
+          Giorgi Bekauri
+        </a>
+        during the course
       </p>
     </div>
-
+    <!-- map -->
     <div id="map"></div>
+
+    <!-- weather -->
+    <div class="weather">
+      <div class="card">
+        <img class="sun__img" src="./image/sun.png" alt="sun" />
+        <div class="temp__location">
+          <p class="temp"></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

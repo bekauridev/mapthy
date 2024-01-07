@@ -1,0 +1,26 @@
+{
+  "name": "mapthy",
+  "short_name": "mapthy",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "scr": "./image/icon.png",
+      "type": "image/png",
+      "sizes": "100x100"
+    },
+    {
+      "scr": "./image/icon-70x70.png",
+      "type": "image/png",
+      "sizes": "70x70"
+    },
+    {
+      "scr": "./image/icon-50x50.png",
+      "type": "image/png",
+      "sizes": "50x50"
+    }
+  ]
+}
