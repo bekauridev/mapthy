@@ -105,7 +105,7 @@ const form = qs('.form');
 
 /** @type {HTMLElement|null } */
 const containerWorkouts = qs('.workouts');
-console.log(containerWorkouts);
+
 //----- Inputs
 /** @type {HTMLInputElement|null} */
 const inputType = qs('.form__input--type');
@@ -235,7 +235,6 @@ class App {
 
       if (workouts && workouts.length !== 0) {
         const data = workouts.map(workout => workout.coords);
-        console.log(`workouts Data`, data);
 
         // Extract latitudes and longitudes from data
         const latLngs = data.map(coords => L.latLng(coords[0], coords[1]));
@@ -496,10 +495,9 @@ class App {
 
     const workoutId = parentEl.dataset.id;
     if (!workoutId) return; // Ensure a valid workout ID is found
-    console.log(`manamde`, this.#workouts);
+
     // Remove the workout from the #workouts array
     this.#workouts = this.#workouts.filter(workout => workout.id !== workoutId);
-    console.log(`shemdgom`, this.#workouts);
 
     // Clear the existing workout elements from the DOM
     this._clearWorkoutList();
@@ -633,7 +631,7 @@ class App {
   _getWorkoutsFromLocalStorage() {
     if (!localStorage.hasOwnProperty('workouts')) return;
     const data = this._getLocalStorage('workouts');
-    console.log(data);
+
     if (!data) return;
 
     this.#workouts = data;
