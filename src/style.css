@@ -1,9 +1,9 @@
 :root {
   --color-brand--1: #ffb545;
   --color-brand--2: #00c46a;
+  --color-brand--2-light: #09ff8e;
 
-  /* --color-dark--1: #2d3439; */
-  --color-dark--1: #262b30;
+  --color-dark--1: #2d3439;
   --color-dark--2: #42484d;
   --color-light--1: #aaa;
   --color-light--2: #ececec;
@@ -23,78 +23,80 @@ html {
 
 body {
   font-family: 'Manrope', sans-serif;
+
+  color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;
   height: 100vh;
   overscroll-behavior-y: none;
 
-  color: var(--color-light--2);
   background-color: #fff;
   padding: 2.5rem;
 
   display: flex;
-  /* flex-direction: column; */
-  position: relative;
 }
-
+img {
+  display: block;
+  max-width: 100%;
+}
 /* GENERAL */
 a:link,
 a:visited {
   color: var(--color-brand--1);
 }
-
+.row {
+  display: flex;
+}
 /* SIDEBAR */
 .sidebar {
+  flex-basis: 50rem;
+  background-color: var(--color-dark--1);
+  padding: 3rem 5rem 4rem 5rem;
   display: flex;
   flex-direction: column;
-  max-width: 50rem;
-  padding: 3rem 5rem 4rem 5rem;
-  background-color: var(--color-dark--1);
 }
-.sidebar__button {
-  font-size: 1.4rem;
-  border-radius: 2rem;
-  /* padding: 0.5rem 1rem; */
-  padding: 4px 10px;
 
-  color: #fff;
-  background-color: red;
-
-  outline: none;
-  cursor: pointer;
-  align-self: flex-start;
-  border: 1px solid;
-}
 .logo {
-  height: 5.2rem;
   align-self: center;
   margin-bottom: 4rem;
+  margin-top: 2rem;
+  width: 15rem;
 }
-.workouts__title--box {
-  display: flex;
-  align-items: center;
+.sidebar-row {
   justify-content: space-between;
-  padding: 1rem 0rem;
-  max-width: 40rem;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.workouts__btn {
-  background-color: var(--color-dark--2);
-  border-radius: 15px;
-  padding: 0.5rem 1rem;
-  color: var(--color-light--2);
-  font-size: 1.5rem;
+.sidebar-row__heading {
   font-weight: 600;
-  letter-spacing: 1px;
-  margin-left: 1rem;
+  font-size: 2.2rem;
+  letter-spacing: 1.1px;
+}
+.sidebar-row__buttons {
+  display: flex;
+  gap: 1rem;
+}
+.sidebar-row__btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 1.1px;
+
+  color: var(--color-light--2);
+  background-color: var(--color-dark--2);
+
   border: none;
   cursor: pointer;
 }
+
 .workouts {
   list-style: none;
   height: 77vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  max-width: 40rem;
 }
 
 .workouts::-webkit-scrollbar {
@@ -102,51 +104,17 @@ a:visited {
 }
 
 .workout {
-  background-color: var(--color-dark--2);
-  border-radius: 5px;
-  padding: 1.5rem 2.25rem;
-  margin-bottom: 1.75rem;
-  cursor: pointer;
   position: relative;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.75rem 1.5rem;
-  max-width: 40rem;
-}
-.message {
-  opacity: 1;
-  height: 4.25rem;
-  font-weight: 600;
-  border-radius: 5px;
-  font-size: 1.48rem;
-  text-align: center;
-  transition: all 0.4s;
-  padding: 1rem 0.2rem;
-  background-color: var(--color-dark--2);
-  margin-bottom: 1.8rem;
-}
 
-.workouts__message--hidden {
-  opacity: 0;
-  padding: 0;
-  height: 2rem;
-}
-.workouts__message-error {
-  display: block;
-  height: 6.25rem;
-  background-color: #7d0d0d46;
-}
-.error-message {
-  height: auto;
-}
-.error-message span {
-  font-size: 1.2rem;
-  font-weight: 200;
-  color: #aaa;
-}
-.error-message--hidden {
-  display: none;
+  padding: 1.5rem 2.25rem;
+  margin-bottom: 1.75rem;
+
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  cursor: pointer;
 }
 .workout--running {
   border-left: 5px solid var(--color-brand--2);
@@ -171,12 +139,6 @@ a:visited {
   margin-right: 0.2rem;
   height: 0.28rem;
 }
-/* workout close icon */
-.workout__icon--closeWorkout {
-  position: absolute;
-  right: 6px;
-  top: 4px;
-}
 
 .workout__value {
   font-size: 1.5rem;
@@ -194,10 +156,10 @@ a:visited {
   position: relative;
   background-color: var(--color-dark--2);
   border-radius: 5px;
-  /* padding: 1.5rem 2.75rem; */
-  padding: 1.6rem 2.8rem;
+  padding: 1.5rem 2.75rem;
   margin-bottom: 1.75rem;
 
+  /* position: absolute; */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 2.5rem;
@@ -206,15 +168,6 @@ a:visited {
   height: 9.25rem;
   transition: all 0.5s, transform 1ms;
 }
-.icon__close {
-  cursor: pointer;
-  font-size: 2rem;
-
-  position: absolute;
-  right: 6px;
-  top: 4px;
-}
-/* form close icon */
 
 .form.hidden {
   transform: translateY(-30rem);
@@ -266,14 +219,14 @@ a:visited {
   color: var(--color-light--1);
 }
 
-.twitter-link:link,
-.twitter-link:visited {
+.socialLink:link,
+.socialLink:visited {
   color: var(--color-light--1);
   transition: all 0.2s;
 }
 
-.twitter-link:hover,
-.twitter-link:active {
+.socialLink:hover,
+.socialLink:active {
   color: var(--color-light--2);
 }
 
@@ -307,31 +260,101 @@ a:visited {
   border-left: 5px solid var(--color-brand--1);
 }
 
-/* weather */
-.weather {
+/* icons */
+.close-iconBox {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  cursor: pointer;
+  background-color: transparent;
+}
+.close-icon {
+  font-size: 2.2rem;
+  color: var(--color-light--2);
+}
+
+/*----- Weather -----*/
+
+.weatherInfo {
   position: absolute;
   top: 30px;
   right: 30px;
   z-index: 1111;
 }
-.card {
+.weatherInfo-card {
   display: flex;
   gap: 1rem;
-  padding: 1rem 1.5rem;
+  justify-content: space-between;
+
+  padding: 0rem 1rem 0rem 0rem;
   border-radius: 25px;
-  background-color: #fff;
+
+  /* background-color: var(--color-brand--2-light); */
+  background-color: var(--color-light--2);
+  transition: border-radius 0.2s;
 }
 
-.sun__img {
-  align-self: center;
-  width: 30px;
-  height: 30px;
+.weatherInfo-card__iconBox {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-light--1);
 }
-
-.temp__location {
+.weatherInfo-card__tempInfoBox {
   color: var(--color-dark--1);
   align-self: center;
 }
-.temp {
+.weatherInfo-card__tempInfo {
   font-size: 2rem;
+}
+
+/*----- Message -----*/
+.message {
+  position: relative;
+  min-height: 4.5rem;
+  /* padding: 1rem 0.2rem; */
+  margin-bottom: 1.8rem;
+
+  opacity: 1;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1.48rem;
+  text-align: center;
+  background-color: var(--color-dark--2);
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.message p {
+  padding: 1rem 0.2rem;
+}
+.timerLine {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 4px;
+  opacity: 1;
+  /* background-color: #ef665b; */
+  background-color: #dfc7c5;
+  width: 0%;
+  animation: fillLine linear 5s;
+  transition: opacity 0.5s ease;
+}
+
+.message:hover .timerLine {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes fillLine {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/*----- Error Message ----- */
+.ErrorMessage {
+  display: block;
+  background-color: #7d0d0d46;
 }
